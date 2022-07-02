@@ -86,7 +86,16 @@ https://pxhere.com/en/photo/458001, License: CCO (https://pxhere.com/en/license)
 
 
 == Changelog ==
-= 1.5.2 1st January 2022 =
+= 1.5.4 29th Jun 2022 =
+* footer issue fixed
+* Child theme dynamic hook moved
+~
+= 1.5.3 16th Jun 2022 =
+* WordPress 5.6 Compatible
+* Child Theme Sparkle Store Compatible
+
+
+= 1.5.2 1st April 2022 =
 * Header Improvement
 * Minor CSS Update
 

@@ -195,6 +195,21 @@ jQuery(document).ready(function($) {
         $('.cart-widget-side').addClass('sparkle-cart-opened');
     });
 
+    $('.header-nav .site-cart-items-wrap').on('click', function(){
+        $('.cart-widget-side').addClass('sparkle-cart-opened');
+    });
+
+    $('li.menu-item-search .searchicon').on('click', function(){
+        $('.box-header-nav .main-menu').hide();
+        $('.category-search-form').show();
+
+    });
+    $('.search-layout-two.sparkle-close-icon').on('click', function(){
+        $('.box-header-nav .main-menu').show();
+        $('.category-search-form').hide();
+        $('li.menu-item-search .searchicon').parent().focus();
+    })
+
     /**
      * WooCommerce Tabs Category Products Functions Area
     */
@@ -378,9 +393,10 @@ jQuery(document).ready(function($) {
         
         var Id = $(this).attr('id');
         var NewId = Id; 
-
-        NewId = $('#'+Id+" .categoryslider").lightSlider({
-            item:4,
+        var wrapper = $('#'+Id+" .categoryslider");
+        var column = wrapper.data('column') || 4;
+        NewId = wrapper.lightSlider({
+            item: column,
             pager:false,
             loop:true,
             speed:600,
@@ -390,7 +406,7 @@ jQuery(document).ready(function($) {
             nextHtml:'<i class="icofont-thin-right"></i>',
             slideMargin:20,
             onSliderLoad: function() {
-                $('.categoryslider').removeClass('cS-hidden');
+                wrapper.removeClass('cS-hidden');
             },
             responsive : [
                 {

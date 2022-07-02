@@ -160,6 +160,25 @@ function sparklestore_widgets_show_widget_field($instance = '', $widget_field = 
             <?php
             break;
 
+        // Select field
+        case 'multiselect' :
+            ?>
+            <p>
+                <label for="<?php echo esc_attr( $instance->get_field_id( $sparklestore_widgets_name )); ?>"><?php echo esc_html( $sparklestore_widgets_title ); ?> :</label>
+                <select name="<?php echo esc_attr( $instance->get_field_name( $sparklestore_widgets_name )); ?>[]" id="<?php echo esc_attr( $instance->get_field_id( $sparklestore_widgets_name )); ?>" class="widefat" multiple>
+                    <?php foreach ($sparklestore_widgets_field_options as $sparklestore_option_name => $sparklestore_option_title) { ?>
+                        <option value="<?php echo esc_attr( $sparklestore_option_name ); ?>" id="<?php echo esc_attr( $instance->get_field_id($sparklestore_option_name)); ?>" <?php if( is_array( $sparklestore_field_value ) && in_array($sparklestore_option_name, $sparklestore_field_value) ) echo "selected";?>><?php echo esc_html( $sparklestore_option_title ); ?></option>
+                    <?php } ?>
+                </select>
+
+                <?php if (isset($sparklestore_widgets_description)) { ?>
+                    <br />
+                    <small><?php echo esc_html( $sparklestore_widgets_description ); ?></small>
+                <?php } ?>
+            </p>
+            <?php
+        break;
+
         // Select Pages field
         case 'selectpage' :
             ?>
@@ -181,10 +200,26 @@ function sparklestore_widgets_show_widget_field($instance = '', $widget_field = 
 
         // Number field
         case 'number' :
+            $default_array = array(
+                'min' => 0,
+                'max' => 999999
+            );
+            if( !isset( $sparklestore_widgets_description ) ){
+                $sparklestore_widgets_description = "";
+            }
+
+            if( isset($sparklestore_widgets_min_max) && is_array($sparklestore_widgets_min_max)){
+                $min_max = array_merge($default_array, $sparklestore_widgets_min_max);
+                $sparklestore_widgets_description .= ' Min: '. $min_max['min']. ' and max: '. $min_max['max'];
+            }else{
+                $min_max = $default_array;
+            }
+            
+
             ?>
             <p>
                 <label for="<?php echo esc_attr( $instance->get_field_id($sparklestore_widgets_name) ); ?>"><?php echo esc_html( $sparklestore_widgets_title ); ?> :</label><br />
-                <input name="<?php echo esc_attr( $instance->get_field_name($sparklestore_widgets_name) ); ?>" type="number" id="<?php echo esc_attr($instance->get_field_id($sparklestore_widgets_name)); ?>" value="<?php echo esc_attr($sparklestore_field_value); ?>" class="widefat" />
+                <input name="<?php echo esc_attr( $instance->get_field_name($sparklestore_widgets_name) ); ?>" type="number" id="<?php echo esc_attr($instance->get_field_id($sparklestore_widgets_name)); ?>" value="<?php echo esc_attr($sparklestore_field_value); ?>" class="widefat" min="<?php echo esc_attr( $min_max['min'] ); ?>" max="<?php echo esc_attr( $min_max['max'] ); ?>" />
 
                 <?php if (isset($sparklestore_widgets_description)) { ?>
                     <br />
@@ -325,6 +360,11 @@ function sparklestore_widgets_updated_field_value($widget_field, $new_field_valu
     elseif ($sparklestore_widgets_field_type == 'multicheckboxes') {
         return $new_field_value;
     }
+
+    elseif ($sparklestore_widgets_field_type == 'multiselect') {
+        return $new_field_value;
+    }
+
     else {
         return wp_kses_post($new_field_value);
     }

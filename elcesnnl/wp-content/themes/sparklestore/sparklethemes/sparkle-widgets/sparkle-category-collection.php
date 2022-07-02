@@ -39,15 +39,15 @@ class sparklestore_cat_widget_area extends WP_Widget {
             'hide_empty'   => $empty
         );
 
-        $title_style = array(
+        $title_style =  apply_filters('sparklestore_cat_widget_area_title_layout', array(
             'layout_one'  => esc_html__('Layout One', 'sparklestore'),
             'layout_two'  => esc_html__('Layout Two', 'sparklestore')
-        );
+        ));
 
-        $display_layout = array(
+        $display_layout = apply_filters('sparklestore_cat_widget_area_display_layout', array(
             'category-style-1'  => esc_html__('Display Style One', 'sparklestore'),
             'category-style-2'  => esc_html__('Display Style Two', 'sparklestore')
-        );
+        ));
 
         $woocommerce_categories = array();
         $woocommerce_categories_obj = get_categories( $args );
@@ -107,7 +107,7 @@ class sparklestore_cat_widget_area extends WP_Widget {
             
         );
 
-        return $fields;
+        return apply_filters('sparklestore_cat_widget_area_fields', $fields );
     }
 
     public function widget($args, $instance) {
@@ -123,6 +123,9 @@ class sparklestore_cat_widget_area extends WP_Widget {
         $block_layout         = empty( $instance['block_display_layout'] ) ? 'layout1' : $instance['block_display_layout'];
         $display_style        = empty( $instance['block_display_style_layout'] ) ? 'category-style-1' : $instance['block_display_style_layout'];
         
+        $arg_val = "data-column=3 data-layout=". $block_layout;
+        $attrs = apply_filters('sparklestore_cat_widget_area_column_attr', $arg_val, $instance);
+
         echo $before_widget;            
     ?>
         <div class="categoryarea <?php echo esc_attr( $title_layout ); ?>">           
@@ -146,7 +149,7 @@ class sparklestore_cat_widget_area extends WP_Widget {
                         </div>
                     <?php } ?>
 
-                    <ul class="<?php echo esc_attr( $display_style ); ?> <?php if( !empty( $block_layout ) && $block_layout == 'layout1' ){ echo esc_attr( 'categoryslider cS-hidden' ); }else{ echo esc_attr( 'storeproductlist' ); }  ?>">
+                    <ul class="<?php echo esc_attr( $display_style ); ?> <?php if( !empty( $block_layout ) && $block_layout == 'layout1' ){ echo esc_attr( 'categoryslider cS-hidden' ); }else{ echo esc_attr( 'storeproductlist' ); }  ?>" <?php echo esc_attr( $attrs ); ?>>
                         <?php
                             $count = 0; 
                             if(!empty( $sparklestore_cat_id ) ){

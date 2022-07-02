@@ -62,6 +62,8 @@ if ( ! function_exists( 'sparklestore_dynamic_css' ) ) {
         $sparklestore_colors .= "
             .wc-block-grid__product-add-to-cart .add_to_cart_button:hover,
 
+            .woocommerce ul.products li.product .price ins, .store_products_item_details .price ins, .woocommerce div.product p.price ins, .woocommerce div.product span.price ins,
+            .woocommerce ul.products li.product .price, .store_products_item_details .price, .woocommerce div.product p.price, .woocommerce div.product span.price,
             .blocktitlewrap .SparkleStoreAction>div,
             .top-header-inner .social ul li a:hover{
                 color: $primary_color;
@@ -196,7 +198,7 @@ if ( ! function_exists( 'sparklestore_dynamic_css' ) ) {
                 color: $footer_font_color;
 
             }\n";
-
+        $sparklestore_colors = apply_filters( 'sparklestore-style-dynamic-css', $sparklestore_colors );
         wp_add_inline_style( 'sparklestore-style', $sparklestore_colors );
         wp_add_inline_style( 'sparklestore-lite-style', $sparklestore_colors );
         wp_add_inline_style( 'crazystore-style', $sparklestore_colors );

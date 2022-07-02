@@ -18,7 +18,7 @@ function sparklestore_customize_register( $wp_customize ) {
 
     $wp_customize->get_section('static_front_page' )->priority = 2;
     $wp_customize->get_section('static_front_page' )->description = '';
-    $wp_customize->remove_control("page_for_posts");
+    // $wp_customize->remove_control("page_for_posts");
 
   /**
    * List All Pages
@@ -1889,7 +1889,8 @@ $wp_customize->add_section('sparklestore_breadcrumbs_normal_page_section', array
           'type' => 'textarea',
           'label' => esc_html__('Footer Content (Copyright Text)', 'sparklestore'),
           'section' => 'sparklestore_footer_settings',
-          'settings' => 'sparklestore_footer_copyright'
+          'settings' => 'sparklestore_footer_copyright',
+          'priority' => 20
       ));
 
       $wp_customize->add_setting('sparklestore_footer_settings_upgrade_text', array(

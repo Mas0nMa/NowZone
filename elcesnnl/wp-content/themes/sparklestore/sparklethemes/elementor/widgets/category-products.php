@@ -194,7 +194,7 @@ class Sparklestore_Category_Products extends Widget_Base{
             <div class="container">                
             	<div class="categoryarea-wrap">                
                 	<div id="categoryproductslider" class="categoryproductslider <?php echo esc_attr( $cat_aligment ); ?>">
-						<?php echo esc_html( $title ); ?>
+						
 						<div class="blocktitlewrap">
 							<div class="blocktitle">
 								<?php if(!empty( $title )) { ?><h2><?php echo esc_html( $title ); ?></h2><?php } ?>

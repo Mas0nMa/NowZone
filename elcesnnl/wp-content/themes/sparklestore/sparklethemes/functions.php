@@ -250,7 +250,7 @@ if ( ! function_exists( 'sparklestore_services_area' ) ){
         }
     }
 }
-add_action( 'sparklestore_services_area', 'sparklestore_services_area' );
+add_action( 'sparklestore_services_area', 'sparklestore_services_area', 10 );
 
 /**
  * Schema type

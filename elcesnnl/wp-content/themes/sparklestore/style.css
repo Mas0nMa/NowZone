@@ -4,8 +4,8 @@ Theme URI: http://sparklewpthemes.com/wordpress-themes/sparklestore
 Author: sparklewpthemes
 Author URI: http://sparklewpthemes.com/
 Description: SparkleStore is a clean user-friendly and feature-rich best free eCommerce WordPress themes. The themes are designed and developed especially for online shopping, eCommerce store websites. SparkleStore is a versatile and highly customizable WooCommerce WordPress theme that allows you to make your own unique and professional website you have always wanted. SparkleStore one of the most accessible eCommerce online store WordPress themes which can easily accommodate all type of users with no coding skills to advanced or normal web developers. SparkleStore includes excellent features for eCommerce website and practices of all type of eCommerce business, themes have included more advanced features like one-click demo data import, webpage layout, advanced theme color, customizer based theme options, page builder-friendly design, individual page & post layout options also is fully compatible with WooCommerce and some other external plugins like YITH WooCommerce Wishlist, YITH WooCommerce Quick View, WOOF – Products Filter for WooCommerce, WooCommerce Variation Swatches, Jetpack, Contact Form 7 and many more plugins. if you face any problem while using our theme, you can refer to our theme documentation (http://docs.sparklewpthemes.com/sparklestore/) or contact our friendly support team (https://sparklewpthemes.com/support/) or Check demo at http://demo.sparklewpthemes.com/sparklestore/ and Read theme details at https://sparklewpthemes.com/wordpress-themes/sparklestore
-Version: 1.5.2
-Tested up to: 5.9
+Version: 1.5.4
+Tested up to: 6.0
 Requires PHP: 7.0
 License: GNU General Public License, version 3 (GPLv3)
 License URI: http://www.gnu.org/licenses/gpl-3.0.txt
@@ -5196,7 +5196,7 @@ ul.productarea li.product {
     position: relative;
     margin-bottom: 2em;
     text-align: center;
-    box-shadow: 0 6px 40px 0 rgba(155, 155, 155, 0.25);
+    box-shadow: 0 2px 2px 0 rgb(155 155 155 / 25%);
     background-color: #ffffff;
     border-radius: 10px;
 }
@@ -5753,4 +5753,7 @@ body:not(.single) .blog-post-thumbnail .postgallery-carousel img{
     height: 400px !important;
     width: 100%;
     object-fit: cover;
+}
+.search-form {
+    position: relative;
 }

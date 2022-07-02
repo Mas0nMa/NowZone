@@ -18,7 +18,7 @@ if ( ! function_exists( 'sparklestore_footer_widget_area' ) ) {
 
 		$mainfooter = get_theme_mod( 'sparklestore_footer_widget_area_option','on' );
 		
-		if( !empty( $mainfooter ) && $mainfooter == 'on'){ ?>
+		if( !empty( $mainfooter ) && $mainfooter == 'on' && ( is_active_sidebar( 'sparklefooterareaone' ) || is_active_sidebar( 'sparklefooterareatwo' ) || is_active_sidebar( 'sparklefooterareathree' ) || is_active_sidebar( 'sparklefooterareafour' ))){ ?>
 
 		<div class="middle-footer-area">
 			<div class="container">                
